@@ -1,0 +1,1 @@
+/Users/owner/Desktop/Ghost-0.11.1/core/client/tmp/funnel-input_base_path-9jvN5u9e.tmp/services/text-measurer.js

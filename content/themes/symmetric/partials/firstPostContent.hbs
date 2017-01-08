@@ -1,0 +1,17 @@
+{{#foreach first_Post}}
+<div class="container">
+  <article class=" {{post_class}} col-lg-8 col-md-8 col-sm-4 home_first_post" >
+    <header>
+      {{#if image}}
+        <a href="{{url}}" class="">
+            <img src="{{image}}" alt="" class="home_first_responsive"style="width:100%;height:253px">
+            <div class="first_title">
+              {{title}}
+            </div>
+        </a>
+      {{/if}}
+    </header>
+  </article>
+</div>
+<div class="clear"></div>
+{{/foreach}}

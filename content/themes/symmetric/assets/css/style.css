@@ -163,6 +163,9 @@ body.cover #single div.main-image .boxed.cover{
 	width: 100%;
 	height: 100%;
 }
+ .test{
+	margin-bottom: 50px;
+}
 .section{ margin-top: 40px; }
 .fullwidth{ display: block; width: 100%; height: auto; }
 .left-content{ }

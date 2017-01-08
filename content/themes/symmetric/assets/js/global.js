@@ -99,6 +99,202 @@
             });
 
         // END OF READ MORE BUTTON FADE OUT
+
+          function chunk(arr, chunkSize) {
+            let transform = Array.from(arr)
+
+            var r = [];
+            for (var i=0,len=transform.length; i<len; i+=chunkSize)
+              //  console.log('im the I',i);
+              //  console.log("Im the chunkSizeeeeeee",chunkSize);
+              r.push(transform.slice(i,i+chunkSize));
+            return r;
+          }
+
+          let isArticlePage = document.getElementsByClassName('post-template')
+          if(isArticlePage){
+          	let fullArticle = document.getElementById('pageContainer')
+          	let articleChildren = fullArticle.children
+          	// let childrenArray = new Array(articleChildren)
+          	// let test = articleChildren.map((child,index)=>{
+          	//   return child
+          	// })
+          	function addClass(arrLike){
+          		for(var i = 0,len=arrLike.length;i<len; i+= 1){
+          			arrLike[i].className = 'page'
+          		}
+          	}
+          	addClass(articleChildren)
+          }
+          var Imtech = {};
+          Imtech.Pager = function() {
+          this.paragraphsPerPage = 3;
+          this.currentPage = 1;
+          this.pagingControlsContainer = '.pagingControls';
+          this.pagingContainerPath = '#pageContainer';
+          this.nextPage = function(){
+            var that = this
+            let x = that.currentPage
+            console.log("im the value of x",x);
+            var current =  function(){
+              y = x
+              console.log("im the value of y inside current",y);
+              return y += 1
+            }
+            return current
+          }
+          this.numPages = function() {
+          var numPages = 0;
+          if (this.paragraphs != null && this.paragraphsPerPage != null) {
+          numPages = Math.ceil(this.paragraphs.length / this.paragraphsPerPage);
+          }
+          return numPages;
+          };
+          this.showPage = function(page) {
+          this.currentPage = page;
+          console.log('I AM THE CURREN PAGEEE!!!@!@!@!@!@',this.currentPage);
+          var html = '';
+          this.paragraphs.slice((page-1) * this.paragraphsPerPage,
+          ((page-1)*this.paragraphsPerPage) + this.paragraphsPerPage).each(function() {
+          html += '<p>' + $(this).html() + '</p>';
+          });
+          $(this.pagingContainerPath).html(html);
+          // this.nextPage(this.currentPage)
+          }
+          this.prev = function(cur){
+          	this.lastPage = cur -= 1
+          	return this.lastPage
+          }
+          this.next = function(cur){
+          	this.nextPage = cur += 1
+          	return this.nextPage
+          }
+
+           this.renderControls = function(container, currentPage, numPages) {
+          var pagingControls = '<div id="nextButton">';
+          if(currentPage <= numPages){
+          	console.log("this is the currentPageeeeeee",currentPage);
+
+          	pagingControls += '<button id="next"class="btn">Next</button>'
+
+          }
+           if(currentPage > 1 && currentPage <=numPages  ){
+          	console.log("do WE even get inside of hereeeeeeee",currentPage);
+          	 $('<button id="previous" class="btn " onclick="pager.showPage(pager.prev('+ currentPage +'))">Prev</button>').insertBefore(".pagingControls")
+          }
+
+          pagingControls += '</div>';
+          $(container).html(pagingControls);
+          }
+
+          }
+          var pager = new Imtech.Pager();
+
+          	pager.paragraphsPerPage = 2; // set amount elements per page
+          	pager.pagingContainer = $('#pageContainer'); // set of main container
+          	pager.paragraphs = $('p.page', pager.pagingContainer); // set of required containers
+          	pager.showPage(1);
+          // console.log("im the PAGERRRRR",pager);
+          function nextButton(){
+            let nextPage = pager.nextPage()
+            let result = nextPage()
+            pager.showPage(result)
+          }
+          function prevButton(){
+            let nextPage = pager.nextPage()
+            let current = nextPage()
+            let prevPage = (current - 1)
+            console.log("im the prevPageeeeeee",prevPage-1);
+            pager.showPage(prevPage-1)
+          }
+          $('.post-format .pagingControls').on("click", "#next", nextButton)
+          $('.post-format .pagingControls').on("click", "#previous", prevButton)
+
+
+
+          //   function nodeCheck(nodes){
+        //     console.log("im inside the nodessssss",nodes);
+        //     console.log("im inside the length",nodes.length);
+        //
+        //     let nodesLength = nodes.length
+        //     for(var i = 0; i < nodesLength; i++ ){
+        //       if(nodes[i].nodeName === 'P'){
+        //         console.log(true);
+        //         console.log("nodes name shoud be this", nodes[i].nodeName);
+        //         return nodes[i].nodeName
+        //       }
+        //     }
+        //   }
+        //   let other = test.filter(nodeCheck)
+        //   console.log("im the children of the entire articleeee",other);
+        // }
+
+
+        //Attempt ad swap in where row-end articles are
+        // var adSwap = (function(child,element){
+        //   return  function insertAfter(referenceNode, newNode) {
+        //     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        //   }
+        //   let parent = document.getElementById('article_Parent')
+        //   let child = document.getElementsByTagName('article')
+        //   let adNode = document.createElement("div")
+        //   adNode.style.height="260px"
+        //   adNode.style.backgroundColor="black"
+        //   adNode.style.margin="0 0 50px 0"
+        //   adNode.classList.add("col-lg-4")
+        //   insertAfter(child[2],adNode)
+        //   // insertAfter(child[6],adNode)
+        // }();)
+        //
+        // adSwap()
+        const adsConfig={
+          envero:{
+                google_ad_client :'google_ad_client = "ca-pub-2315916373893743" \r'+
+                ' google_ad_slot = "8208348125"\r'+
+                ' google_ad_width = 336 \r'+
+                ' google_ad_height = 280 '
+
+
+                }
+        }
+
+
+        // var adSwap = (function(parentEl,element,i){
+        //   return function(p,el,i){
+        //     let parent = document.getElementById(p)
+        //     // let createChild = document.getElementsByTagName(child)
+        //     let container = document.createElement('iframe')
+        //     let scriptConfig = document.createElement('script')//.innerHTML = adsConfig.envero.google_ad_client
+        //     let adNode = document.createElement(el)
+        //     container.setAttribute('id',"my_Iframe")
+        //     // container.appendChild(scriptConfig)
+        //     // scriptConfig.innerHTML = adsConfig.envero.google_ad_client
+        //     adNode.type = 'text/javascript'
+        //     adNode.async = true
+        //     // adNode.setAttribute('src','//pagead2.googlesyndication.com/pagead/show_ads.js')
+        //     // adNode.style.height="260px"
+        //     // adNode.style.backgroundColor="black"
+        //     // adNode.style.margin="0 0 50px 0"
+        //     // adNode.classList.add("col-lg-4")
+        //      container.appendChild(adNode)
+        //     console.log("Do we get a log of the Contianer parentNodeeeeee",container);
+        //        return parent.insertBefore(container, parent.childNodes[i])
+        //   }
+        // })();
+        //
+        //  adSwap('article_Parent','script',8)
+        //  adSwap('article_Parent','script',25)
+
+        //  function insert(){
+        //    var newWindow = document.getElementById('my_Iframe')
+        //    var script = newWindow.contentWindow.document.createElement("script");
+        //   script.type = "text/javascript";
+        //   script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
+        //   newWindow.contentWindow.document.body.appendChild(script);
+         //
+        //  }
+        //  insert()
+
         // INFINITE SCROLL
         // How we display the new posts  once the new posts are recieved
 

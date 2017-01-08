@@ -1,0 +1,42 @@
+
+
+
+.home_first_post{
+ margin-top:50px;
+ margin-bottom: 50px;
+}
+.home_following_posts{
+  margin-bottom:50px;
+  height:260px;
+}
+.clear_left{
+  float:right;
+}
+.box{
+  border: 1px solid color:black;
+}
+.headerPorn{
+  height:60px;
+  width:270px;
+}
+.footerPorn{
+  height:60px;
+  width:270px;
+}
+.main-image{
+  margin:0 auto
+}
+.postRR1{
+  padding-top:30px;
+}
+.postLR1{
+  padding-top:30px;
+}
+#pageContainer{
+  padding-top:30px;
+}
+/*THIS IS OUR CUSTOM RESPONSIVE STYLES
+  THERE IS JUST TOO MUCH GOING ON IN THE ACTUAL
+  RESPONSIVE CSS SHEET THAT I DIDNT WANT TO DEAL WITH....
+  ANOTHER DAY MAYBE....
+  */
