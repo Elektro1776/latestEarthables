@@ -1,0 +1,1 @@
+/var/www/latestEarthables/core/client/app/components/gh-tag-settings-form.js

@@ -1,0 +1,1 @@
+/Users/owner/Desktop/Ghost-0.11.1/core/client/tmp/funnel-input_base_path-TPxc2tT2.tmp/fake-owner.js

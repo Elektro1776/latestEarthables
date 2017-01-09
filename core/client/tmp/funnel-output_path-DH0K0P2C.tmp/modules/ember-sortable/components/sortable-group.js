@@ -1,0 +1,1 @@
+/Users/owner/Desktop/Ghost-0.11.1/core/client/tmp/funnel-input_base_path-RC06g25l.tmp/components/sortable-group.js

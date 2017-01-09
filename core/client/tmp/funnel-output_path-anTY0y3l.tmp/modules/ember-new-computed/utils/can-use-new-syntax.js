@@ -1,0 +1,1 @@
+/Users/owner/Desktop/Ghost-0.11.1/core/client/tmp/funnel-input_base_path-nAaK1ZE7.tmp/utils/can-use-new-syntax.js
