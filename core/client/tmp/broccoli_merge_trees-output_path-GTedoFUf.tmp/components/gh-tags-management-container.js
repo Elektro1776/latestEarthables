@@ -1,0 +1,1 @@
+/var/www/latestEarthables/core/client/app/components/gh-tags-management-container.js

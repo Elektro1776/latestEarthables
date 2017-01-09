@@ -1,0 +1,1 @@
+/var/www/latestEarthables/core/client/tmp/funnel-input_base_path-42eXlwNJ.tmp/mixins/data-adapter-mixin.js

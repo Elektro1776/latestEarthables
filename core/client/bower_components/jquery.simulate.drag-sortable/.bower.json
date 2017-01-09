@@ -1,0 +1,30 @@
+{
+  "name": "jquery.simulate.drag-sortable",
+  "description": "Simulate drag events within a JQuery UI Sortable widget (primarily for integration testing).",
+  "version": "0.1.0",
+  "main": "jquery.simulate.drag-sortable.js",
+  "dependencies": {
+    "jquery": ">=1.6",
+    "jquery-ui": ">=1.8"
+  },
+  "homepage": "https://github.com/mattheworiordan/jquery.simulate.drag-sortable.js",
+  "authors": [
+    "http://mattheworiordan.com"
+  ],
+  "keywords": [
+    "jquery",
+    "simulate",
+    "drag",
+    "sortable"
+  ],
+  "license": "?",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "61f0e6320add70c0c846ba63d7d3224ad721cd9a"
+  },
+  "_source": "https://github.com/mcavaliere/jquery.simulate.drag-sortable.js.git",
+  "_target": "0.1.0",
+  "_originalSource": "jquery.simulate.drag-sortable"
+}

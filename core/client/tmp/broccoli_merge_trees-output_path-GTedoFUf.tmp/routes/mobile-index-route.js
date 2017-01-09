@@ -1,0 +1,1 @@
+/var/www/latestEarthables/core/client/app/routes/mobile-index-route.js

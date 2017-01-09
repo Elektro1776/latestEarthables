@@ -1,0 +1,1 @@
+/var/www/latestEarthables/core/client/app/components/gh-file-input.js

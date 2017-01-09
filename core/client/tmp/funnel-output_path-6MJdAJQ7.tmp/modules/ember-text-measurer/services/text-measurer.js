@@ -1,0 +1,1 @@
+/var/www/latestEarthables/core/client/tmp/funnel-input_base_path-71CGLJEs.tmp/services/text-measurer.js
