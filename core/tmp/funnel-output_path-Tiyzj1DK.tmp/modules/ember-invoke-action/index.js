@@ -1,1 +1,0 @@
-/Users/owner/Desktop/Ghost-0.11.1/core/client/tmp/funnel-input_base_path-l1X9qINj.tmp/index.js

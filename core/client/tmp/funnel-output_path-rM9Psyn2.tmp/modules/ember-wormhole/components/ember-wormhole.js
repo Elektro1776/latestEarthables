@@ -1,1 +1,0 @@
-/Users/owner/Documents/latestEarthables/core/client/tmp/funnel-input_base_path-z2Ux6xdU.tmp/components/ember-wormhole.js

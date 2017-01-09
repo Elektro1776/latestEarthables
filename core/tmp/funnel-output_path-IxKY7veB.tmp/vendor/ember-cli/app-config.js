@@ -1,1 +1,0 @@
-/Users/owner/Desktop/Ghost-0.11.1/core/client/tmp/funnel-input_base_path-0V7so1E0.tmp/app-config.js
