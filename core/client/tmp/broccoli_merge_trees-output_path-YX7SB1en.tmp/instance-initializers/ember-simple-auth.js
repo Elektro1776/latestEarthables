@@ -1,0 +1,1 @@
+/Users/owner/Documents/latestEarthables/core/client/tmp/broccoli_merge_trees-input_base_path-V4s90zCM.tmp/30/instance-initializers/ember-simple-auth.js

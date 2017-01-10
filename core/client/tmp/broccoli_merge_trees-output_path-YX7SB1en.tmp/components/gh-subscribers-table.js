@@ -1,0 +1,1 @@
+/Users/owner/Documents/latestEarthables/core/client/app/components/gh-subscribers-table.js

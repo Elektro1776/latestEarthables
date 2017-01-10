@@ -1,0 +1,48 @@
+.ember-light-table .align-left {
+  text-align: left;
+}
+
+.ember-light-table .align-right {
+  text-align: right;
+}
+
+.ember-light-table .align-center {
+  text-align: center;
+}
+
+.ember-light-table .lt-column .lt-sort-icon {
+  float: right;
+}
+
+.ember-light-table .lt-column.is-sortable {
+  cursor: pointer;
+}
+
+.ember-light-table .lt-row.is-expandable,
+.ember-light-table .lt-row.is-selectable {
+  cursor: pointer;
+}
+
+.liquid-tether-element {
+  position: absolute;
+}
+
+.liquid-target-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.liquid-target {
+  position: relative;
+}
+
+.liquid-wormhole-container {
+  display: none;
+}
+
+.liquid-target > .liquid-child {
+  overflow: visible;
+}

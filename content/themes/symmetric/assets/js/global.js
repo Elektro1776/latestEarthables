@@ -5,6 +5,13 @@
   /* Dom Loaded */
   $(document)
       .ready(function($) {
+        var currentURL = window.location.href
+
+
+        var resetURL = currentURL.substring(0, currentURL.lastIndexOf("/") + 1)
+        var nextUrl = resetURL
+           console.log("HEY I SHOULD BE THE INITIAL URL!!!!!",resetURL);
+         window.history.pushState('state','null',nextUrl)
         var $window = $(window), ath = $('#addThis');
         setTimeout(function() {
           ath.addClass("addthis_sharing_toolbox col-lg-offset-3")
@@ -110,106 +117,152 @@
               r.push(transform.slice(i,i+chunkSize));
             return r;
           }
-
-          let isArticlePage = document.getElementsByClassName('post-template')
+          //FIGURE OUT IF WE ARE ON A POST PAGE
+          // IF YES ADD OUR PAGE CLASS TO OUR ARTICLE CHILDREN SO WE CAN CREATE
+          // OUR PAGINATION OBJECT
+          let isArticlePage = document.getElementById('single')
           if(isArticlePage){
           	let fullArticle = document.getElementById('pageContainer')
           	let articleChildren = fullArticle.children
-          	// let childrenArray = new Array(articleChildren)
-          	// let test = articleChildren.map((child,index)=>{
-          	//   return child
-          	// })
+
           	function addClass(arrLike){
           		for(var i = 0,len=arrLike.length;i<len; i+= 1){
           			arrLike[i].className = 'page'
           		}
           	}
-          	addClass(articleChildren)
-          }
-          var Imtech = {};
-          Imtech.Pager = function() {
-          this.paragraphsPerPage = 3;
-          this.currentPage = 1;
-          this.pagingControlsContainer = '.pagingControls';
-          this.pagingContainerPath = '#pageContainer';
-          this.nextPage = function(){
-            var that = this
-            let x = that.currentPage
-            console.log("im the value of x",x);
-            var current =  function(){
-              y = x
-              console.log("im the value of y inside current",y);
-              return y += 1
+          	addClass(articleChildren);
+            // CREATE OUR NEW PAGER OBJECT INITIALIZE VARIABLES AND FUNCTIONS
+            var Imtech = {};
+
+            Imtech.Pager = function() {
+                  this.paragraphsPerPage = 3;
+                  this.currentPage = 1;
+                  this.pagingControlsContainer = '.pagingControls';
+                  this.pagingContainerPath = '#pageContainer';
+
+                  this.nextPage = function(){
+                    let that = this;
+                    let x = that.currentPage;
+                    let current =  function(){
+                      y = x
+                      return y += 1;
+                    }
+                    return current;
+                  };
+
+                  this.numPages = function() {
+                  let numPages = 0;
+                  if (this.paragraphs != null && this.paragraphsPerPage != null) {
+                  numPages = Math.ceil(this.paragraphs.length / this.paragraphsPerPage);
+                  }
+                  return numPages;
+                  };
+
+                  this.currentHTML = function(html){
+                    let currHtml = this.currentData;
+                    let newHTML = function(){
+                      newHtml = currHtml;
+                      return newHtml;
+                    }
+                    return newHTML;
+                  };
+
+                  this.showPage = function(page) {
+                  this.currentPage = page;
+                  var html = '';
+                  this.paragraphs.slice((page-1) * this.paragraphsPerPage,
+                  ((page-1)*this.paragraphsPerPage) + this.paragraphsPerPage).each(function() {
+                  html += '<p>' + $(this).html() + '</p>';
+                  });
+                  $(this.pagingContainerPath).html(html);
+                  this.currentHTML(html);
+                  this.currentData = html;
+                };
+
+                  this.prev = function(cur){
+                    this.lastPage = cur -= 1;
+                    return this.lastPage;
+                  };
+
+                  this.next = function(cur){
+                    this.nextPage = cur += 1;
+                    return this.nextPage;
+                  }
+
+                  //  this.renderControls = function(container, currentPage, numPages) {
+                  // var pagingControls = '<div id="nextButton">';
+                  // if(currentPage <= numPages){
+                  // 	console.log("this is the currentPageeeeeee",currentPage);
+                  //
+                  // 	pagingControls += '<button id="next"class="btn">Next</button>'
+                  //
+                  // }
+                  //  if(currentPage > 1 && currentPage <=numPages  ){
+                  // 	console.log("do WE even get inside of hereeeeeeee",currentPage);
+                  // 	 $('<button id="previous" class="btn " onclick="pager.showPage(pager.prev('+ currentPage +'))">Prev</button>').insertBefore(".pagingControls")
+                  // }
+                  //
+                  // pagingControls += '</div>';
+                  // $(container).html(pagingControls);
+                  // }
+            };
+              //********************************END OF OUR PAGINATION OBJECT ***************************//
+
+            //CREATE OUR NEW INSTANCE OF Imtech
+            // AND INITIALIZE OUR VALUES FOR PAGINATION
+            var pager = new Imtech.Pager();
+
+              pager.paragraphsPerPage = 2; // set amount elements per page
+              pager.pagingContainer = $('#pageContainer'); // set of main container
+              pager.paragraphs = $('p.page', pager.pagingContainer); // set of required containers
+              pager.showPage(1);
+
+            // OUR PAGINATION NEXT BUTTON HANDLER
+            function nextButton(e){
+              let nextPage = pager.nextPage();
+              let result = nextPage();
+
+              let newHtml = pager.currentHTML();
+
+              function nextURL(){
+                var currentURL = window.location.href
+                location.hash = result
+                var resetURL = currentURL.substring(0, currentURL.lastIndexOf("/") + 1)
+                var nextUrl = resetURL+result
+                 window.history.pushState('state','null',nextUrl)
+              }
+              e.preventDefault();
+              pager.showPage(result);
+              nextURL();
             }
-            return current
-          }
-          this.numPages = function() {
-          var numPages = 0;
-          if (this.paragraphs != null && this.paragraphsPerPage != null) {
-          numPages = Math.ceil(this.paragraphs.length / this.paragraphsPerPage);
-          }
-          return numPages;
-          };
-          this.showPage = function(page) {
-          this.currentPage = page;
-          console.log('I AM THE CURREN PAGEEE!!!@!@!@!@!@',this.currentPage);
-          var html = '';
-          this.paragraphs.slice((page-1) * this.paragraphsPerPage,
-          ((page-1)*this.paragraphsPerPage) + this.paragraphsPerPage).each(function() {
-          html += '<p>' + $(this).html() + '</p>';
-          });
-          $(this.pagingContainerPath).html(html);
-          // this.nextPage(this.currentPage)
-          }
-          this.prev = function(cur){
-          	this.lastPage = cur -= 1
-          	return this.lastPage
-          }
-          this.next = function(cur){
-          	this.nextPage = cur += 1
-          	return this.nextPage
-          }
+            // OUR PAGINANTION PREV BUTTON HANDLER
+            function prevButton(e){
+              let nextPage = pager.nextPage()
+              let current = nextPage()
+              let prevPage = current - 1
 
-           this.renderControls = function(container, currentPage, numPages) {
-          var pagingControls = '<div id="nextButton">';
-          if(currentPage <= numPages){
-          	console.log("this is the currentPageeeeeee",currentPage);
+              function prevURL(){
+                var currentURL = window.location.href;
+                var resetURL = currentURL.substring(0, currentURL.lastIndexOf("/") + 1);
+                var prevPageNum = prevPage - 1;
+                var prevUrl = resetURL + prevPageNum;
+                if(prevPageNum == 1){
+                  window.history.pushState('state','null',resetURL);
+                }else{
+                  window.history.pushState('state','null',prevUrl);
 
-          	pagingControls += '<button id="next"class="btn">Next</button>'
+                }
+              }
+              e.preventDefault();
+              pager.showPage(prevPage - 1);
+              prevURL();
+            };
 
-          }
-           if(currentPage > 1 && currentPage <=numPages  ){
-          	console.log("do WE even get inside of hereeeeeeee",currentPage);
-          	 $('<button id="previous" class="btn " onclick="pager.showPage(pager.prev('+ currentPage +'))">Prev</button>').insertBefore(".pagingControls")
-          }
+            // CLICK HANDLER FUNCTIONS SET ON OUR BUTTONS
 
-          pagingControls += '</div>';
-          $(container).html(pagingControls);
-          }
-
-          }
-          var pager = new Imtech.Pager();
-
-          	pager.paragraphsPerPage = 2; // set amount elements per page
-          	pager.pagingContainer = $('#pageContainer'); // set of main container
-          	pager.paragraphs = $('p.page', pager.pagingContainer); // set of required containers
-          	pager.showPage(1);
-          // console.log("im the PAGERRRRR",pager);
-          function nextButton(){
-            let nextPage = pager.nextPage()
-            let result = nextPage()
-            pager.showPage(result)
-          }
-          function prevButton(){
-            let nextPage = pager.nextPage()
-            let current = nextPage()
-            let prevPage = (current - 1)
-            console.log("im the prevPageeeeeee",prevPage-1);
-            pager.showPage(prevPage-1)
-          }
-          $('.post-format .pagingControls').on("click", "#next", nextButton)
-          $('.post-format .pagingControls').on("click", "#previous", prevButton)
-
+            $('.post-format .pagingControls').on("click", "#next", nextButton);
+            $('.post-format .pagingControls').on("click", "#previous", prevButton);
+  }
 
 
           //   function nodeCheck(nodes){

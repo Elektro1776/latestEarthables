@@ -1,0 +1,1 @@
+/Users/owner/Documents/latestEarthables/core/client/node_modules/liquid-wormhole/app/transitions/fade-right.js

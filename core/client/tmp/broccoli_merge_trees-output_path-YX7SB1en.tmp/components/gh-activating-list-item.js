@@ -1,0 +1,1 @@
+/Users/owner/Documents/latestEarthables/core/client/app/components/gh-activating-list-item.js

@@ -31,7 +31,7 @@ config = {
     development: {
         // The url to use when providing links to the site, E.g. in RSS and email.
         // Change this to your Ghost blog's published URL.
-        url: 'http://dev.groupxondemand.com',
+        url: 'http://127.0.0.1:2368',
 
         // Example refferer policy
         // Visit https://www.w3.org/TR/referrer-policy/ for instructions
@@ -59,9 +59,8 @@ config = {
             client: 'pg',
             connection: {
                 host     : '127.0.0.1',
-		
-                user     : 'groupx',
-                password : 'Austin1776#',
+                user     : 'owner',
+                password : 'aequitas2',
                 database : 'clickBait',
                 charset  : 'utf8'
             }

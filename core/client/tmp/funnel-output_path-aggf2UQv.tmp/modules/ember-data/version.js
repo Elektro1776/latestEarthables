@@ -1,0 +1,1 @@
+/Users/owner/Documents/latestEarthables/core/client/tmp/creator-output_path-6sUeXQ9Y.tmp/version.js
